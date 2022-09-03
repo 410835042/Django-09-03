@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>歡迎蒞臨 愛不釋手</h1>
+    <p>誠摯歡迎您使用本網站 敬祝使用愉快</p>
+{# 暫時先不用   <input id="popuptest" type="button" class="input_button" value="使用手勢操作">#}
+<div class="pagesize">
+time==0
+    {% for instance in object_list %}
+        time = time + 1
+        {% if time <= 4 %}
+            <div class ="size">
+                <a href ='{{ instance.get_absolute_url }}'>
+                    <div class="forimage">
+                        <img src="{{ instance.picture }}">
+                    </div >
+                    <p class="psize" style="font-size:18px;"> {{ instance.product_name }} </p>
+                    <p class="psize" style="font-size:14px;"> {{ instance.material_color }} </p>
+                </a>
+            </div>
+        {% endif %}
+
+{#        <li><a href='{{ instance.get_absolute_url }}'> {{ instance.product_name }} </a></li>#}
+    {% endfor %}
+</div>
+    <script type="application/javascript">
+        let button = document.getElementById('popuptest');
+        function popup2(e) {
+            window.confirm('是否使用手勢操作');
+        }
+        button.addEventListener('click', popup2);
+    </script>
+{% endblock %}
