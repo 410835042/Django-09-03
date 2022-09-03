@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <center>
+        <h1>{{ object.product_name }}</h1>
+        <p>材質與顏色 | {{ object.material_color }}</p>
+        <p>敘述 | {{ object.description }}</p>
+        <p>價格 | {{ object.price }}</p>
+        <p>圖片 | {{ object.picture.url }}</p>
+
+        {% if object.picture %}
+            圖片 | <img src="{{ object.picture.url }}"><br/>
+        {% else %}
+            <p>圖片 | （無）)</p><br/>
+        {% endif %}
+
+        {% if request.user.identity == 1 %}
+            <button type="submit"> <a href='../'> 回到清單 </a></button>
+            <button type="submit"> <a href='../../3dtest/'> 模擬配戴 </a></button>
+            <button type="submit"> <a href='update/'> 更新 </a></button>
+            <button type="submit"> <a href='delete/'> 刪除 </a></button>
+        {% elif request.user.identity == 0 %}
+            <button type="submit"> <a href='../../3dtest/'> 模擬配戴 </a></button>
+            <form action='.' method='POST'>{% csrf_token %}
+{#                {{ form }}#}
+                <input type='submit' class="input_button" value='加到我的最愛'/>
+            </form>
+
+        {% endif %}
+    </center>
+{% endblock %}
