@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for instance in cart %}
+        {% if  instance.account_id == request.user.id %}
+            <li><a href='{{ instance.product.get_absolute_url }}'> {{ instance.product.product_name }} </a> </li>
+{#             <li>{{ instance.product.product_name }}</li>#}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
