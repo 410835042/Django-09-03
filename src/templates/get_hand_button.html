@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <button onclick="call_counter('http://127.0.0.1:8000/GetHand/getting');">偵測手部比例</button>
+    <button onclick="call_counter('http://127.0.0.1:8000/GetHand/get_and_control');">抓比例＋手勢操作</button>
+
+    {#        <button onclick="call_counter('http://127.0.0.1:8000/GetHand_output/video_stream');">網路上的Video</button>#}
+    {#        <button onclick="call_counter('http://127.0.0.1:8000/GetHand_output/mediapipe');">Mediapipe官網</button>#}
+
+    <div class="link-middle"></div>
+
+    <h1>操作步驟</h1>
+    <h3>偵測手部比例</h3>
+    <p>1. 將欲偵測的手手心面對境頭且保持30約公分的距離</p>
+    <p>2. 保持手部穩定後，點選「偵測手部比例」進入新頁面</p>
+    <p>3. 新頁面中出現鏡頭畫面後即可關閉新頁面</p>
+    <p>4. 關閉新頁面後即完成手部比例的偵測</p>
+    <p>(注意事項：本系統目前一次只能偵測一隻手，若鏡頭抓取到的畫面中出現一隻以上的手，可能出現錯誤。)</p><br/>
+
+    <h3>手勢操作</h3>
+    <p>1. </p>
+    <p>2. </p>
+    <p>3. </p>
+    <p>4. </p>
+
+    <script>
+        function call_counter(url) { window.open(url); }
+    </script>
+{% endblock %}
